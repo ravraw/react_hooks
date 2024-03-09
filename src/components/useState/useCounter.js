@@ -5,15 +5,27 @@ const Counter = () => {
   const [count, setCount] = useState(0);
   console.log("render Counter", count);
 
-  const increment = () => {
+  const incrementBy1 = () => {
     setCount(count + 1);
   };
 
-  const decrement = () => {
+  const decrementBy1 = () => {
     setCount(count - 1);
   };
   const reset = () => {
     setCount(0);
+  };
+
+  const incrementBy3 = () => {
+    setCount((count) => count + 1);
+    setCount((count) => count + 1);
+    setCount((count) => count + 1);
+  };
+
+  const decrementBy3 = () => {
+    setCount((count) => count - 1);
+    setCount((count) => count - 1);
+    setCount((count) => count - 1);
   };
 
   return (
@@ -22,10 +34,14 @@ const Counter = () => {
         <Text style={styles.counter}>{count}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="Increment" onPress={increment} />
-        <Button title="Decrement" onPress={decrement} />
-        <Button title="Reset" onPress={reset} />
+        <Button title="Increment + 1" onPress={incrementBy1} />
+        <Button title="Decrement - 1 " onPress={decrementBy1} />
       </View>
+      <View style={styles.buttonContainer}>
+        <Button title="Increment + 3" onPress={incrementBy3} />
+        <Button title="Decrement - 3" onPress={decrementBy3} />
+      </View>
+      <Button title="Reset" onPress={reset} />
     </View>
   );
 };
